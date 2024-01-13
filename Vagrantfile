@@ -3,7 +3,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/bionic64"
 
   # Synkronisera nuvarande mapp med /vagrant på gäst-VM
-  config.vm.synced_folder ".", "/vagrant"
+  config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
 
   # Portvidarebefordran från värdmaskin till gäst-VM
   config.vm.network "forwarded_port", guest: 8080, host: 8080
@@ -30,20 +30,20 @@ Vagrant.configure("2") do |config|
   SHELL
 
   # Skript för att installera MySQL
-  config.vm.provision "shell", inline: <<-SHELL
+  # config.vm.provision "shell", inline: <<-SHELL
     # Installera MySQL
-    sudo apt-get install -y mysql-server
+    # sudo apt-get install -y mysql-server
 
     # Säkerhetskonfigurationer (kan anpassas)
-    sudo mysql_secure_installation
+   #  sudo mysql_secure_installation
 
     # Skapa en databas och användare (ersätt med dina värden)
-    sudo mysql -e "CREATE DATABASE my_database;"
-    sudo mysql -e "CREATE USER 'my_user'@'localhost' IDENTIFIED BY 'my_password';"
-    sudo mysql -e "GRANT ALL ON my_database.* TO 'my_user'@'localhost';"
-    sudo mysql -e "FLUSH PRIVILEGES;"
+   #  sudo mysql -e "CREATE DATABASE my_database;"
+   #  sudo mysql -e "CREATE USER 'my_user'@'localhost' IDENTIFIED BY 'my_password';"
+  #   sudo mysql -e "GRANT ALL ON my_database.* TO 'my_user'@'localhost';"
+  #   sudo mysql -e "FLUSH PRIVILEGES;"
 
     # Ladda in data till databasen (ersätt med ditt skript/fil)
     # sudo mysql -u my_user -pmy_password my_database < /vagrant/my_data.sql
-  SHELL
+ #  SHELL
 end
