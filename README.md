@@ -5,6 +5,10 @@ vagrant up
 ```sh
 mvn spring-boot:run
 ```
+
+```sh
+mvn test
+```
 http://localhost:8080/
 
 vagrant up
